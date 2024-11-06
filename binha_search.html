@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Catalogue INHA</title>
+    <meta name="description" content="Catalogue INHA">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <style>
+      html {background-color: white; background-size: 8.28px 30.91px; background-attachment: fixed;}
+      body {margin-bottom: 100px;}
+      .container {max-width: 650px; margin: 0 auto;}
+      a:link {text-decoration: none; color: #75201a; outline: 0;}
+      a:visited {text-decoration: none; color: #75201a; outline: 0;}
+      a:hover {text-decoration: underline; color: #75201a;}
+      .main_font {font-family: 'Playfair Display', Helvetica, serif; font-weight: 200; color: red;}
+      .home_title {text-align: left; font-size: 36px; font-style: bold; font-weight: 400; margin: 80px 0 30px 0; color: red;}
+      .header {text-align: left; font-size: 30px;}
+      .body_text {font-size: 14px; margin: 50px 0 30px 0; line-height: 170%; font-weight: 300; text-align: right; color: red;}
+      form {background-color: #f7f3f2; width: 100%; height: 60px; border-radius: 5px; display:flex; flex-direction:row; align-items:center; margin-top: 50px;}
+      input {all: unset; font: 20px system-ui; color: #303030; height: 100%; width: 100%; padding: 6px 20px;}
+      ::placeholder {color: grey; opacity: 0.7;}
+      svg {color: grey; fill: currentColor; width: 24px; height: 24px; padding: 10px;}
+      button {all: unset; cursor: pointer; width: 44px; height: 44px;}
+      @media screen and (max-device-width: 480px) {
+        .home_title {font-size: 2.25em; margin: 20px 0 10px 0;}
+      	.home_body {font-size: 1em; text-align: left;}
+        .nav {font-size: 1em;}}
+      /* removes the search ‘x’ from IE */
+        input[type=search]::-ms-clear {display: none; width : 0; height: 0;}
+        input[type=search]::-ms-reveal {display: none; width : 0; height: 0;}
+      /* removes the search ‘x’ from Chrome */
+        input[type="search"]::-webkit-search-decoration,
+        input[type="search"]::-webkit-search-cancel-button,
+        input[type="search"]::-webkit-search-results-button,
+        input[type="search"]::-webkit-search-results-decoration {display: none;}
+    </style>
+  </head>
+
+<!-- NEED TO HAVE BOTH FR and EN ENCODING -->
+
+  <body>
+    <div class="container">
+
+      <div class="">
+        <p class="home_title main_font">
+          catalogue de la bibliothèque de l'INHA<br>recherche rapide*
+        </p>
+      </div>
+
+      <form role="search" id="form">
+        <input type="search" id="query" name="q" placeholder="Recherche..." aria-label="Search INHA catalog">
+        <button></button>
+      </form>
+      <script>
+        const f = document.getElementById('form');
+        const q = document.getElementById('query');
+        const searcha = 'https://inha-fr.primo.exlibrisgroup.com/discovery/search?query=any,contains,';
+        const searchb = '&tab=Livres_et_revues&search_scope=Livres_et_revues&vid=33INHA_INST:33INHA_INST&offset=0';
+        const site = '';
+
+        function submitted(event) {
+          event.preventDefault();
+          const url = searcha + q.value + searchb + '+' ;
+          const win = window.open(url, '_blank');
+          win.focus();
+        }
+
+        f.addEventListener('submit', submitted);
+      </script>
+
+      <div class="main_font">
+        <p class="body_text">
+          *Page non-affiliée à l'INHA (<a href="https://github.com/gillmanme" target="_blank">code disponible sur Github</a>). <br>Pour le site officiel de la bibliothèque, <a href="https://www.inha.fr/bibliotheque/" target="_blank">cliquez ici</a>.
+        </p>
+      </div>
+
+    </div>
+  </body>
+</html>
